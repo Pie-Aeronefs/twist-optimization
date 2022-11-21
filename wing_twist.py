@@ -9,7 +9,7 @@ import numpy as np
 import openvsp as vsp
 
 parms = {
-    "filename":"UG-2.vsp3",
+    "filename":"a-wing.vsp3",
     # "b" : 8., #span, taken from VSP
     "CL":0.9, #target lift
     "N": 15, # n of basis functions NOTE N MUST BE GREATER THAN M!!!
@@ -19,8 +19,8 @@ parms = {
     "debug" : True,
     "adjust_span_stations" : False,
     "run_sims": True,
-    "geom_name":"Main_wing_base",
-    "geom_id": None,
+    # you can set this to look at a different geometry
+    #"geom_name":"Main_wing_base",
     "magnitude":1.
     }
 
@@ -100,15 +100,16 @@ def sim(geom,static,aoa=0.,name=None):
     vsp.SetIntAnalysisInput("VSPAEROComputeGeometry","AnalysisMethod",[0]) #Vortex Lattice = 0, panel = 1
     compgeom_results = vsp.ExecAnalysis("VSPAEROComputeGeometry")
 
-    vsp.SetAnalysisInputDefaults("VSPAEROSinglePoint")
-    vsp.SetIntAnalysisInput("VSPAEROSinglePoint","AnalysisMethod",[0]) #Vortex Lattice = 0, panel = 1
-    vsp.SetDoubleAnalysisInput("VSPAEROSinglePoint","Sref",[static["vals"]["S_ref"]])
-    vsp.SetDoubleAnalysisInput("VSPAEROSinglePoint","bref",[static["vals"]["b_ref"]])
-    vsp.SetDoubleAnalysisInput("VSPAEROSinglePoint","cref",[static["vals"]["c_ref"]])
-    vsp.SetDoubleAnalysisInput("VSPAEROSinglePoint","Alpha",[aoa])
-    vsp.SetDoubleAnalysisInput("VSPAEROSinglePoint","Symmetry",[1])
+    vsp.SetAnalysisInputDefaults("VSPAEROSweep")
+    vsp.SetIntAnalysisInput("VSPAEROSweep","AnalysisMethod",[0]) #Vortex Lattice = 0, panel = 1
+    vsp.SetDoubleAnalysisInput("VSPAEROSweep","Sref",[static["vals"]["S_ref"]])
+    vsp.SetDoubleAnalysisInput("VSPAEROSweep","bref",[static["vals"]["b_ref"]])
+    vsp.SetDoubleAnalysisInput("VSPAEROSweep","cref",[static["vals"]["c_ref"]])
+    vsp.SetDoubleAnalysisInput("VSPAEROSweep","AlphaStart",[aoa])
+    vsp.SetDoubleAnalysisInput("VSPAEROSweep","AlphaNpts",[1])
+    vsp.SetDoubleAnalysisInput("VSPAEROSweep","Symmetry",[1])
 
-    results = vsp.ExecAnalysis("VSPAEROSinglePoint")
+    results = vsp.ExecAnalysis("VSPAEROSweep")
     if name == None :
         name = "unnamed"
     vsp.WriteResultsCSVFile(results,f"{name}_twist_optimizer.csv")
@@ -254,8 +255,11 @@ def main(parms):
     # initialize
     vsp.ClearVSPModel()
     vsp.ReadVSPFile(parms["filename"])
-    if parms["geom_id"] is None :
-        geom = vsp.FindGeomsWithName(parms["geom_name"])[-1]
+    if "geom_id" not in parms :
+        if "geom_name" not in parms :
+            geom = vsp.FindGeoms()[-1]
+        else :
+            geom = vsp.FindGeomsWithName(parms["geom_name"])[-1]
     else :
         geom = parms["geom_id"]
 

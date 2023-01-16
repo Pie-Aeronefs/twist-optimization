@@ -12,7 +12,11 @@ When `adjust_span_stations` is `True`, your model will be written to.
 
 # Current status
 
-Buggy. This is an initial version which has known problems we are still investigating.
+All the previously known bugs are gone. The result match our general expectations,
+but have not been completely validated yet either.  
+
+Please post on the OpenVSP users mailing list about your experiences with
+this tool if you try it.
 
 # References
 

@@ -6,6 +6,7 @@
 # Copyright 2022, Pie Aeronefs s.a.
 
 import numpy as np
+import matplotlib.pyplot as plt
 import openvsp as vsp
 
 vsp.VSPCheckSetup()
@@ -390,7 +391,15 @@ def main(parms):
             geom,static,
             aoa=final_twist["aoa"],name="optimized",
             oswald=True)
-        final_perf = find_Cl_dist(final)
+        final_perf,Yavg = find_Cl_dist(final,get_y=True)
+
+        fig = plt.figure(0)
+        ax = fig.add_subplot(1, 1, 1)
+        ax.plot(Yavg, Clcy, label='Baseline')
+        ax.plot(Yavg, Clc_y_target, label='Target')
+        ax.plot(Yavg, final_perf, label='Result')
+        ax.legend()
+        plt.show()
 
         print("Baseline CL distribution: ",Clcy)
         print("Target CL distribution: ",Clc_y_target)

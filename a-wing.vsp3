@@ -31,8 +31,8 @@
         <X_Min Value="-7.206074015848294390e-07" ID="XHJCUBKRGSX"/>
         <Y_Len Value="7.628999999999999559e+00" ID="IGWZPRKEYFU"/>
         <Y_Min Value="-3.814499999999999780e+00" ID="ETOWDSWIPSH"/>
-        <Z_Len Value="1.249799653999933841e-01" ID="VXPQJGCSESP"/>
-        <Z_Min Value="-4.229335489891540567e-02" ID="GKQMMLTEAQO"/>
+        <Z_Len Value="1.215239861651496722e-01" ID="VXPQJGCSESP"/>
+        <Z_Min Value="-3.995252088554515635e-02" ID="GKQMMLTEAQO"/>
       </BBox>
       <Background>
         <HeightScale Value="1.000000000000000000e+00" ID="JOQOZGGABOE"/>
@@ -66,6 +66,7 @@
         <DegenGeom_M_Export Value="1.000000000000000000e+00" ID="RWHSUIRUCHT"/>
       </ExportFlag>
       <FeaStructure>
+        <StructModelUnit Value="6.000000000000000000e+00" ID="DZDJCOVFNBT"/>
         <StructUnit Value="3.000000000000000000e+00" ID="AKSFINLMEGJ"/>
       </FeaStructure>
       <FitModel>
@@ -101,6 +102,7 @@
       </IGESSettings>
       <MassProperties>
         <DrawCgFlag Value="1.000000000000000000e+00" ID="QVCWPGJKDJD"/>
+        <MassSliceDir Value="0.000000000000000000e+00" ID="HQNBQEKWAXY"/>
         <NumMassSlices Value="2.000000000000000000e+01" ID="PBCXZAEKDXH"/>
       </MassProperties>
       <Measure>
@@ -108,6 +110,7 @@
       </Measure>
       <PSlice>
         <AutoBoundsFlag Value="1.000000000000000000e+00" ID="XEYXIIAFRTC"/>
+        <MeasureDuctFlag Value="0.000000000000000000e+00" ID="EMOIBASDBHH"/>
         <NumPlanerSlices Value="1.000000000000000000e+01" ID="KCBMYJNTTEX"/>
         <PlanarAxisType Value="0.000000000000000000e+00" ID="TPRAACDJHQO"/>
         <PlanarEndLocation Value="1.000000000000000000e+01" ID="FJNPKUGFXCU"/>
@@ -319,9 +322,21 @@
         <ID>NYPQKFOLCU</ID>
         <Name>Main_wing_base</Name>
         <Attach>
+          <L_01 Value="1.000000000000000000e+00" ID="XGCMFYNYCED"/>
+          <L_Attach_Location Value="0.000000000000000000e+00" ID="SRIZVVVNDDN"/>
+          <L_Attach_Location0Len Value="0.000000000000000000e+00" ID="WTZBTFKMPFT"/>
+          <M_Attach_Location Value="5.000000000000000000e-01" ID="RBBPREFCMFH"/>
+          <N_Attach_Location Value="5.000000000000000000e-01" ID="XWEEHGROQWV"/>
+          <R_01 Value="1.000000000000000000e+00" ID="FDTOGNTXSVK"/>
+          <R_Attach_Location Value="0.000000000000000000e+00" ID="EFADXWTQDTH"/>
+          <R_Attach_Location0N Value="0.000000000000000000e+00" ID="NICUUICRQWO"/>
           <Rots_Attach_Flag Value="0.000000000000000000e+00" ID="XEUZKTOVPAW"/>
+          <S_Attach_Location Value="5.000000000000000000e-01" ID="TAAYMWCDWDY"/>
+          <T_Attach_Location Value="5.000000000000000000e-01" ID="PSUNYDQJNRR"/>
           <Trans_Attach_Flag Value="0.000000000000000000e+00" ID="GUSCXYXKVRL"/>
+          <U_01 Value="1.000000000000000000e+00" ID="ARWBQRWEFBJ"/>
           <U_Attach_Location Value="9.999999999999999547e-07" ID="QDNUFEHFCTI"/>
+          <U_Attach_Location0N Value="0.000000000000000000e+00" ID="NJHCEFAPLRS"/>
           <V_Attach_Location Value="9.999999999999999547e-07" ID="SKVHFJIUUVA"/>
         </Attach>
         <BBox>
@@ -329,8 +344,8 @@
           <X_Min Value="-7.206074015848294390e-07" ID="JXYBNUSSSBU"/>
           <Y_Len Value="7.628999999999999559e+00" ID="RVMWCGRUMBP"/>
           <Y_Min Value="-3.814499999999999780e+00" ID="HFNMBKWQMRM"/>
-          <Z_Len Value="1.249799653999933841e-01" ID="OTSSHDULHJX"/>
-          <Z_Min Value="-4.229335489891540567e-02" ID="VTYQDVDDHJE"/>
+          <Z_Len Value="1.215239861651496722e-01" ID="OTSSHDULHJX"/>
+          <Z_Min Value="-3.995252088554515635e-02" ID="VTYQDVDDHJE"/>
         </BBox>
         <EndCap>
           <CapUMaxLength Value="1.000000000000000000e+00" ID="KNEFJHAZWHU"/>
@@ -346,7 +361,7 @@
           <CapUMinTess Value="3.000000000000000000e+00" ID="OKDHLMXCGFT"/>
         </EndCap>
         <Index>
-          <ActiveAirfoil Value="7.000000000000000000e+00" ID="JHJLTHHIDSB"/>
+          <ActiveAirfoil Value="1.000000000000000000e+00" ID="JHJLTHHIDSB"/>
           <ActiveXSec Value="1.000000000000000000e+00" ID="SXCZPSTQUNE"/>
         </Index>
         <Mass_Props>
@@ -455,7 +470,7 @@
               <FeaSubSurface>
                 <CapFeaPropertyIndex Value="1.000000000000000000e+00" ID="FZLBJPBFTSS"/>
                 <DrawFeaPartFlag Value="1.000000000000000000e+00" ID="LHVBWHZQYOZ"/>
-                <FeaPropertyIndex Value="0.000000000000000000e+00" ID="DHIUQLIVCAN"/>
+                <FeaPropertyIndex Value="-1.000000000000000000e+00" ID="DHIUQLIVCAN"/>
                 <Orientation Value="6.000000000000000000e+00" ID="FHGYYSNFUJH"/>
               </FeaSubSurface>
               <ParasiteDragProps>
@@ -472,8 +487,10 @@
                 <Const_Line_Type Value="1.000000000000000000e+00" ID="GIBALTZNIUB"/>
                 <Const_Line_Value Value="6.125000000000000444e-01" ID="PNPLYNOWIMQ"/>
                 <Const_Line_Value0N Value="2.450000000000000178e+00" ID="ZHXWVULSPSR"/>
+                <CreateBeamElements Value="0.000000000000000000e+00" ID="SIGRJAPKAQD"/>
                 <IncludeFlag Value="0.000000000000000000e+00" ID="CFGFGEAGAGC"/>
-                <IncludedElements Value="0.000000000000000000e+00" ID="WWYPEKHPJCX"/>
+                <IncludedElements Value="-1.000000000000000000e+00" ID="WWYPEKHPJCX"/>
+                <KeepDelShellElements Value="0.000000000000000000e+00" ID="SZDZDAGLWUC"/>
                 <MainSurfIndx Value="0.000000000000000000e+00" ID="ZCFABUPRJCV"/>
                 <Test_Type Value="1.000000000000000000e+00" ID="JDQGEEIYNNP"/>
                 <Value_01 Value="1.000000000000000000e+00" ID="GWIDOPBVDSI"/>
@@ -482,6 +499,8 @@
             <SubSurfaceInfo>
               <Type>0</Type>
             </SubSurfaceInfo>
+            <FeaPropertyID>PMUGQKNJMI</FeaPropertyID>
+            <CapFeaPropertyID/>
           </SubSurface>
           <SubSurface>
             <ParmContainer>
@@ -490,7 +509,7 @@
               <FeaSubSurface>
                 <CapFeaPropertyIndex Value="1.000000000000000000e+00" ID="FEMZVNITFHZ"/>
                 <DrawFeaPartFlag Value="1.000000000000000000e+00" ID="HYAEZMWOGAA"/>
-                <FeaPropertyIndex Value="0.000000000000000000e+00" ID="PRZYAHAVAYK"/>
+                <FeaPropertyIndex Value="-1.000000000000000000e+00" ID="PRZYAHAVAYK"/>
                 <Orientation Value="6.000000000000000000e+00" ID="GYSCASLROXV"/>
               </FeaSubSurface>
               <ParasiteDragProps>
@@ -507,8 +526,10 @@
                 <Const_Line_Type Value="1.000000000000000000e+00" ID="NGZHKINPYOO"/>
                 <Const_Line_Value Value="3.875000000000000111e-01" ID="SYZYSDVAUZQ"/>
                 <Const_Line_Value0N Value="1.550000000000000044e+00" ID="CHNBVSFIING"/>
+                <CreateBeamElements Value="0.000000000000000000e+00" ID="UTCTSXUQNUC"/>
                 <IncludeFlag Value="0.000000000000000000e+00" ID="XMCTVIRPCFI"/>
-                <IncludedElements Value="0.000000000000000000e+00" ID="AXEQLTASDON"/>
+                <IncludedElements Value="-1.000000000000000000e+00" ID="AXEQLTASDON"/>
+                <KeepDelShellElements Value="0.000000000000000000e+00" ID="HKIOUYAXMVW"/>
                 <MainSurfIndx Value="0.000000000000000000e+00" ID="RYFTQFGNUBF"/>
                 <Test_Type Value="0.000000000000000000e+00" ID="FURORRBNINM"/>
                 <Value_01 Value="1.000000000000000000e+00" ID="DVTUTGJEPWS"/>
@@ -517,6 +538,8 @@
             <SubSurfaceInfo>
               <Type>0</Type>
             </SubSurfaceInfo>
+            <FeaPropertyID>PMUGQKNJMI</FeaPropertyID>
+            <CapFeaPropertyID/>
           </SubSurface>
         </SubSurfaces>
         <FeaStructures/>
@@ -537,23 +560,23 @@
                 <Avg_Chord Value="8.180000000000000604e-01" ID="REXKKRJLECH"/>
                 <Dihedral Value="0.000000000000000000e+00" ID="CYKFAJZJXLN"/>
                 <InCluster Value="1.000000000000000000e+00" ID="OPIJLDBCCHC"/>
-                <InLEDihedral Value="3.974611634633941626e-01" ID="GFRWKKMDWTM"/>
+                <InLEDihedral Value="7.016709298534876753e-15" ID="GFRWKKMDWTM"/>
                 <InLEMode Value="0.000000000000000000e+00" ID="YGCSTOGAHPI"/>
                 <InLEStrength Value="1.000000000000000000e+00" ID="SFVDYDQRTNQ"/>
-                <InLESweep Value="4.448260170107687372e-03" ID="AAZHWZRRZFN"/>
-                <InTEDihedral Value="-5.961811848658061797e-01" ID="LIDPDDSOFMI"/>
+                <InLESweep Value="-0.000000000000000000e+00" ID="AAZHWZRRZFN"/>
+                <InTEDihedral Value="-7.016709298534876753e-15" ID="LIDPDDSOFMI"/>
                 <InTEMode Value="0.000000000000000000e+00" ID="RAVJLGXTEZP"/>
                 <InTEStrength Value="1.000000000000000000e+00" ID="GAIZWPVWEOB"/>
-                <InTESweep Value="-6.503468457111694079e-03" ID="HEWFYTOJGPK"/>
+                <InTESweep Value="0.000000000000000000e+00" ID="HEWFYTOJGPK"/>
                 <OutCluster Value="1.000000000000000000e+00" ID="CEOEEEUONDC"/>
-                <OutLEDihedral Value="-3.974611634633941626e-01" ID="SCHAHNAPHMI"/>
+                <OutLEDihedral Value="-7.016709298534876753e-15" ID="SCHAHNAPHMI"/>
                 <OutLEMode Value="0.000000000000000000e+00" ID="ZLVIOZCQJRE"/>
                 <OutLEStrength Value="1.000000000000000000e+00" ID="ASBPYSLVFQZ"/>
-                <OutLESweep Value="4.448260170107687372e-03" ID="GNGKGNUEKWK"/>
-                <OutTEDihedral Value="5.961811848658061797e-01" ID="GYIKRWFPDJC"/>
+                <OutLESweep Value="-0.000000000000000000e+00" ID="GNGKGNUEKWK"/>
+                <OutTEDihedral Value="7.016709298534876753e-15" ID="GYIKRWFPDJC"/>
                 <OutTEMode Value="0.000000000000000000e+00" ID="HICBVYRMNMR"/>
                 <OutTEStrength Value="1.000000000000000000e+00" ID="AWWDYCCLVML"/>
-                <OutTESweep Value="-6.503468457111694079e-03" ID="DNGUAUXNZEP"/>
+                <OutTESweep Value="0.000000000000000000e+00" ID="DNGUAUXNZEP"/>
                 <ProjectedSpan Value="0.000000000000000000e+00" ID="TOISRXRWIKT"/>
                 <Root_Chord Value="1.000000000000000000e+00" ID="WLFQCBMMWTQ"/>
                 <RotateMatchDideralFlag Value="0.000000000000000000e+00" ID="NIFJZOWKBMA"/>
@@ -697,14 +720,14 @@
                 <Avg_Chord Value="6.360000000000000098e-01" ID="FPQRHPZVYBZ"/>
                 <Dihedral Value="0.000000000000000000e+00" ID="GJLLCBEFEBL"/>
                 <InCluster Value="5.000000000000000000e-01" ID="BNAZXQZWIHN"/>
-                <InLEDihedral Value="3.974636174536645417e-01" ID="XUNDYICAALM"/>
+                <InLEDihedral Value="7.016709298534876753e-15" ID="XUNDYICAALM"/>
                 <InLEMode Value="0.000000000000000000e+00" ID="ULWMEAGNMTD"/>
                 <InLEStrength Value="1.000000000000000000e+00" ID="WJNJHOBLPTN"/>
-                <InLESweep Value="-4.223298423397636725e-03" ID="AQLCTPQDTSO"/>
-                <InTEDihedral Value="-5.961811848658061797e-01" ID="YWEDXHZZVVE"/>
+                <InLESweep Value="-0.000000000000000000e+00" ID="AQLCTPQDTSO"/>
+                <InTEDihedral Value="-7.016709298534876753e-15" ID="YWEDXHZZVVE"/>
                 <InTEMode Value="0.000000000000000000e+00" ID="SYGCBHWRNMD"/>
                 <InTEStrength Value="1.000000000000000000e+00" ID="JXMUDLXTWCL"/>
-                <InTESweep Value="6.503468457111694079e-03" ID="FXXEJSTDATZ"/>
+                <InTESweep Value="0.000000000000000000e+00" ID="FXXEJSTDATZ"/>
                 <OutCluster Value="5.000000000000000000e-01" ID="CLZYUKOJTWY"/>
                 <OutLEDihedral Value="-7.016709298534876753e-15" ID="UGWPNBFJYZN"/>
                 <OutLEMode Value="0.000000000000000000e+00" ID="TGWWZLMDTSB"/>
@@ -725,7 +748,7 @@
                 <Sweep_Location Value="2.500000000000000000e-01" ID="GWMUHKXGREX"/>
                 <Taper Value="1.000000000000000000e+00" ID="CXTCVQHYZSO"/>
                 <Tip_Chord Value="6.360000000000000098e-01" ID="OFRAIQHJBAC"/>
-                <Twist Value="-1.250000000000000000e+00" ID="EEGPYSBJAKC"/>
+                <Twist Value="0.000000000000000000e+00" ID="EEGPYSBJAKC"/>
                 <Twist_Location Value="4.000000000000000222e-01" ID="WHXHOQOIUVV"/>
               </XSec>
             </ParmContainer>
@@ -866,14 +889,14 @@
                 <InTEStrength Value="1.000000000000000000e+00" ID="HKSDVRMPFYF"/>
                 <InTESweep Value="0.000000000000000000e+00" ID="VRJTQVMWGPS"/>
                 <OutCluster Value="5.000000000000000000e-01" ID="DVYZHGGJFDQ"/>
-                <OutLEDihedral Value="-4.542390992009172068e-01" ID="SXKXROMXLSU"/>
+                <OutLEDihedral Value="-7.016709298534876753e-15" ID="SXKXROMXLSU"/>
                 <OutLEMode Value="0.000000000000000000e+00" ID="SHCCYADTLTT"/>
                 <OutLEStrength Value="1.000000000000000000e+00" ID="HDWVUTICAJB"/>
-                <OutLESweep Value="5.083688461809288128e-03" ID="MZCHRRPLOQH"/>
-                <OutTEDihedral Value="6.813423982932177436e-01" ID="QVYQEGJBIVS"/>
+                <OutLESweep Value="-0.000000000000000000e+00" ID="MZCHRRPLOQH"/>
+                <OutTEDihedral Value="7.016709298534876753e-15" ID="QVYQEGJBIVS"/>
                 <OutTEMode Value="0.000000000000000000e+00" ID="BOSTKGSKCTR"/>
                 <OutTEStrength Value="1.000000000000000000e+00" ID="IMLVMGXVPCR"/>
-                <OutTESweep Value="-7.432412204906313491e-03" ID="HZCFGDJOIZO"/>
+                <OutTESweep Value="0.000000000000000000e+00" ID="HZCFGDJOIZO"/>
                 <ProjectedSpan Value="8.000000000000000444e-01" ID="KYJGNKOBHEI"/>
                 <Root_Chord Value="6.360000000000000098e-01" ID="LTFYDAWOHAT"/>
                 <RotateMatchDideralFlag Value="0.000000000000000000e+00" ID="OXTDYHTJZLW"/>
@@ -885,7 +908,7 @@
                 <Sweep_Location Value="2.500000000000000000e-01" ID="FYLWTRQSLKK"/>
                 <Taper Value="1.000000000000000000e+00" ID="SAKJUVQHKGT"/>
                 <Tip_Chord Value="6.360000000000000098e-01" ID="CRRQCHJRSCO"/>
-                <Twist Value="-1.250000000000000000e+00" ID="ADSZAMMXBJN"/>
+                <Twist Value="0.000000000000000000e+00" ID="ADSZAMMXBJN"/>
                 <Twist_Location Value="4.000000000000000222e-01" ID="TFLFEWUDIHS"/>
               </XSec>
             </ParmContainer>
@@ -1017,23 +1040,23 @@
                 <Avg_Chord Value="6.360000000000000098e-01" ID="DRGAFWCMISB"/>
                 <Dihedral Value="0.000000000000000000e+00" ID="PFRQBTICZAT"/>
                 <InCluster Value="5.000000000000000000e-01" ID="DNKQWFKDDBZ"/>
-                <InLEDihedral Value="4.542419037199258991e-01" ID="YBDGCVMVERB"/>
+                <InLEDihedral Value="7.016709298534876753e-15" ID="YBDGCVMVERB"/>
                 <InLEMode Value="0.000000000000000000e+00" ID="KOSUIYXWEJL"/>
                 <InLEStrength Value="1.000000000000000000e+00" ID="CUSGPKCIWUO"/>
-                <InLESweep Value="-4.826591216357201120e-03" ID="SSZUQDRVNMN"/>
-                <InTEDihedral Value="-6.813423982932177436e-01" ID="TASXCSWJRNZ"/>
+                <InLESweep Value="-0.000000000000000000e+00" ID="SSZUQDRVNMN"/>
+                <InTEDihedral Value="-7.016709298534876753e-15" ID="TASXCSWJRNZ"/>
                 <InTEMode Value="0.000000000000000000e+00" ID="TLWWYZTDRNT"/>
                 <InTEStrength Value="1.000000000000000000e+00" ID="HWMJLELTQPK"/>
-                <InTESweep Value="7.432412204877891782e-03" ID="LTAURWCYBUQ"/>
+                <InTESweep Value="0.000000000000000000e+00" ID="LTAURWCYBUQ"/>
                 <OutCluster Value="5.000000000000000000e-01" ID="KPXUDCRDHJD"/>
-                <OutLEDihedral Value="5.299448783475845248e-01" ID="MKCGXSUUQBT"/>
+                <OutLEDihedral Value="-7.016709298534876753e-15" ID="MKCGXSUUQBT"/>
                 <OutLEMode Value="0.000000000000000000e+00" ID="DRPAXLVMEOE"/>
                 <OutLEStrength Value="1.000000000000000000e+00" ID="LIXVTJXMPPR"/>
-                <OutLESweep Value="5.630959179427463823e-03" ID="HVGKQMSTMHJ"/>
-                <OutTEDihedral Value="-7.948859348629057076e-01" ID="LJWBYEDZCYQ"/>
+                <OutLESweep Value="-0.000000000000000000e+00" ID="HVGKQMSTMHJ"/>
+                <OutTEDihedral Value="7.016709298534876753e-15" ID="LJWBYEDZCYQ"/>
                 <OutTEMode Value="0.000000000000000000e+00" ID="FUOOPJXLCNH"/>
                 <OutTEStrength Value="1.000000000000000000e+00" ID="BCSDQOHQGOX"/>
-                <OutTESweep Value="-8.670926176108650907e-03" ID="KCSLQWOZQMW"/>
+                <OutTESweep Value="0.000000000000000000e+00" ID="KCSLQWOZQMW"/>
                 <ProjectedSpan Value="6.999999999999997335e-01" ID="BERVZRUCJDI"/>
                 <Root_Chord Value="6.360000000000000098e-01" ID="VWQFSCZCODI"/>
                 <RotateMatchDideralFlag Value="0.000000000000000000e+00" ID="PMAMLZDBCAA"/>
@@ -1045,7 +1068,7 @@
                 <Sweep_Location Value="2.500000000000000000e-01" ID="YVFWUWWOFUH"/>
                 <Taper Value="1.000000000000000000e+00" ID="IPRUYNAUQKN"/>
                 <Tip_Chord Value="6.360000000000000098e-01" ID="EPEGCOOBXUO"/>
-                <Twist Value="-2.500000000000000000e+00" ID="OINDMISTQKG"/>
+                <Twist Value="0.000000000000000000e+00" ID="OINDMISTQKG"/>
                 <Twist_Location Value="4.000000000000000222e-01" ID="NRJCFFLUBTR"/>
               </XSec>
             </ParmContainer>
@@ -1177,23 +1200,23 @@
                 <Avg_Chord Value="6.360000000000000098e-01" ID="PWIEMYJGYYN"/>
                 <Dihedral Value="0.000000000000000000e+00" ID="IZQWUZFMVKH"/>
                 <InCluster Value="5.000000000000000000e-01" ID="TXXWUPVBXHL"/>
-                <InLEDihedral Value="-5.299416064830091422e-01" ID="YLRCIAAAAJC"/>
+                <InLEDihedral Value="7.016709298534876753e-15" ID="YLRCIAAAAJC"/>
                 <InLEMode Value="0.000000000000000000e+00" ID="OPUXDPURMXC"/>
                 <InLEStrength Value="1.000000000000000000e+00" ID="JKSUFKWTOEJ"/>
-                <InLESweep Value="-5.930902561999573663e-03" ID="OAONQIALNHY"/>
-                <InTEDihedral Value="7.948859348629057076e-01" ID="PQBFYWEAIWB"/>
+                <InLESweep Value="-0.000000000000000000e+00" ID="OAONQIALNHY"/>
+                <InTEDihedral Value="-7.016709298534876753e-15" ID="PQBFYWEAIWB"/>
                 <InTEMode Value="0.000000000000000000e+00" ID="GATDMMMGCYD"/>
                 <InTEStrength Value="1.000000000000000000e+00" ID="UICNEXJKHWK"/>
-                <InTESweep Value="8.670926176080229197e-03" ID="QLEXSVEUKMT"/>
+                <InTESweep Value="0.000000000000000000e+00" ID="QLEXSVEUKMT"/>
                 <OutCluster Value="5.000000000000000000e-01" ID="AATXWQPBWYI"/>
-                <OutLEDihedral Value="3.179911578306957587e-01" ID="LSITNAXNMDX"/>
+                <OutLEDihedral Value="-7.016709298534876753e-15" ID="LSITNAXNMDX"/>
                 <OutLEMode Value="0.000000000000000000e+00" ID="XGCWFJVTYLA"/>
                 <OutLEStrength Value="1.000000000000000000e+00" ID="UVPOAEFFZJB"/>
-                <OutLESweep Value="1.644387502324207162e-03" ID="JLOWBDCACKI"/>
-                <OutTEDihedral Value="-4.769795211931441292e-01" ID="JSDAIALNKTF"/>
+                <OutLESweep Value="-0.000000000000000000e+00" ID="JLOWBDCACKI"/>
+                <OutTEDihedral Value="7.016709298534876753e-15" ID="JSDAIALNKTF"/>
                 <OutTEMode Value="0.000000000000000000e+00" ID="BXEDCCCRUXE"/>
                 <OutTEStrength Value="1.000000000000000000e+00" ID="YVFYLIRUENF"/>
-                <OutTESweep Value="-2.601515467489434741e-03" ID="YZSEUMKYSIA"/>
+                <OutTESweep Value="0.000000000000000000e+00" ID="YZSEUMKYSIA"/>
                 <ProjectedSpan Value="5.999999999999999778e-01" ID="BHPCIYPMMBX"/>
                 <Root_Chord Value="6.360000000000000098e-01" ID="GMINHTZGKYR"/>
                 <RotateMatchDideralFlag Value="0.000000000000000000e+00" ID="ACDNPPDYUSW"/>
@@ -1205,7 +1228,7 @@
                 <Sweep_Location Value="2.500000000000000000e-01" ID="JLMZVDEMHMC"/>
                 <Taper Value="1.000000000000000000e+00" ID="UWSNZEKQIRF"/>
                 <Tip_Chord Value="6.360000000000000098e-01" ID="DBPTPNLFUAC"/>
-                <Twist Value="-1.250000000000000000e+00" ID="RAIIYEADSGT"/>
+                <Twist Value="0.000000000000000000e+00" ID="RAIIYEADSGT"/>
                 <Twist_Location Value="4.000000000000000222e-01" ID="TZQAOYLLEFU"/>
               </XSec>
             </ParmContainer>
@@ -1337,23 +1360,23 @@
                 <Avg_Chord Value="6.360000000000000098e-01" ID="SKRUAEKVQMA"/>
                 <Dihedral Value="0.000000000000000000e+00" ID="OGUIZUJGUSW"/>
                 <InCluster Value="5.000000000000000000e-01" ID="GURCQSKKUPU"/>
-                <InLEDihedral Value="-3.179901761883790479e-01" ID="JQMARLMKBGT"/>
+                <InLEDihedral Value="7.016709298534876753e-15" ID="JQMARLMKBGT"/>
                 <InLEMode Value="0.000000000000000000e+00" ID="BTZPHWOZTSQ"/>
                 <InLEStrength Value="1.000000000000000000e+00" ID="MPELHXEFRTH"/>
-                <InLESweep Value="-1.824369166286032851e-03" ID="YHGLZOAWMZO"/>
-                <InTEDihedral Value="4.769795211931441292e-01" ID="IPJJFMALEII"/>
+                <InLESweep Value="-0.000000000000000000e+00" ID="YHGLZOAWMZO"/>
+                <InTEDihedral Value="-7.016709298534876753e-15" ID="IPJJFMALEII"/>
                 <InTEMode Value="0.000000000000000000e+00" ID="NBHOLEORJOV"/>
                 <InTEStrength Value="1.000000000000000000e+00" ID="PUYVJDPOUGI"/>
-                <InTESweep Value="2.601515467517856450e-03" ID="BSYJHDYJBOB"/>
+                <InTESweep Value="0.000000000000000000e+00" ID="BSYJHDYJBOB"/>
                 <OutCluster Value="5.000000000000000000e-01" ID="DMNAJKJOGTY"/>
-                <OutLEDihedral Value="2.649971998450904587e-01" ID="DQRHXJTAHGC"/>
+                <OutLEDihedral Value="-7.016709298534876753e-15" ID="DQRHXJTAHGC"/>
                 <OutLEMode Value="0.000000000000000000e+00" ID="GYYMXMSRJIF"/>
                 <OutLEStrength Value="1.000000000000000000e+00" ID="WOCRKNSORLF"/>
-                <OutLESweep Value="6.476725861546128726e-04" ID="WQPXXDGLTPO"/>
-                <OutTEDihedral Value="-3.974916520725804148e-01" ID="WLWXRBKOCFI"/>
+                <OutLESweep Value="-0.000000000000000000e+00" ID="WQPXXDGLTPO"/>
+                <OutTEDihedral Value="7.016709298534876753e-15" ID="WLWXRBKOCFI"/>
                 <OutTEMode Value="0.000000000000000000e+00" ID="JUGVNQIEYWT"/>
                 <OutTEStrength Value="1.000000000000000000e+00" ID="NLWQLTOWHQL"/>
-                <OutTESweep Value="-1.083984316409214443e-03" ID="JUIWSHUMABU"/>
+                <OutTESweep Value="0.000000000000000000e+00" ID="JUIWSHUMABU"/>
                 <ProjectedSpan Value="5.000000000000000000e-01" ID="LRVDNWDUNBU"/>
                 <Root_Chord Value="6.360000000000000098e-01" ID="RSXKTNVWUZQ"/>
                 <RotateMatchDideralFlag Value="0.000000000000000000e+00" ID="QXMKFKAYYMQ"/>
@@ -1365,7 +1388,7 @@
                 <Sweep_Location Value="2.500000000000000000e-01" ID="IJCWNRTCQWC"/>
                 <Taper Value="1.000000000000000000e+00" ID="LDCHTKZRHOJ"/>
                 <Tip_Chord Value="6.360000000000000098e-01" ID="YEABEQPPYRT"/>
-                <Twist Value="-6.250000000000000000e-01" ID="IDCEIZNAOPI"/>
+                <Twist Value="0.000000000000000000e+00" ID="IDCEIZNAOPI"/>
                 <Twist_Location Value="4.000000000000000222e-01" ID="YUFYIZHWSLC"/>
               </XSec>
             </ParmContainer>
@@ -1497,19 +1520,19 @@
                 <Avg_Chord Value="6.360000000000000098e-01" ID="IKZUIXGLJPT"/>
                 <Dihedral Value="0.000000000000000000e+00" ID="OAULHTDEHYQ"/>
                 <InCluster Value="5.000000000000000000e-01" ID="FPVNEIAMUSH"/>
-                <InLEDihedral Value="-2.649967908205644873e-01" ID="RCIZLMFMKXX"/>
+                <InLEDihedral Value="7.016709298534876753e-15" ID="RCIZLMFMKXX"/>
                 <InLEMode Value="0.000000000000000000e+00" ID="IWJYZWQKNPY"/>
                 <InLEStrength Value="1.000000000000000000e+00" ID="DFNVKPGDWSR"/>
-                <InLESweep Value="-7.976602427106627147e-04" ID="QHZMKWFXRXY"/>
-                <InTEDihedral Value="3.974916520725804148e-01" ID="JTYDFIMSIQY"/>
+                <InLESweep Value="-0.000000000000000000e+00" ID="QHZMKWFXRXY"/>
+                <InTEDihedral Value="-7.016709298534876753e-15" ID="JTYDFIMSIQY"/>
                 <InTEMode Value="0.000000000000000000e+00" ID="HFHLCGYAHJT"/>
                 <InTEStrength Value="1.000000000000000000e+00" ID="CSIPNLOVAEY"/>
-                <InTESweep Value="1.083984316409214443e-03" ID="HWKWDAFEYCA"/>
+                <InTESweep Value="0.000000000000000000e+00" ID="HWKWDAFEYCA"/>
                 <OutCluster Value="5.000000000000000000e-01" ID="AJPUGXCOBPK"/>
                 <OutLEDihedral Value="-7.016709298534876753e-15" ID="CMRFCJGXQOC"/>
                 <OutLEMode Value="0.000000000000000000e+00" ID="QWPCEEQXZEK"/>
                 <OutLEStrength Value="1.000000000000000000e+00" ID="ZFCENUMHPGT"/>
-                <OutLESweep Value="0.000000000000000000e+00" ID="BVFNAEWHDJE"/>
+                <OutLESweep Value="-0.000000000000000000e+00" ID="BVFNAEWHDJE"/>
                 <OutTEDihedral Value="7.016709298534876753e-15" ID="UQDBZHWKHOV"/>
                 <OutTEMode Value="0.000000000000000000e+00" ID="ERESJCVJTYO"/>
                 <OutTEStrength Value="1.000000000000000000e+00" ID="ZSUTRRNMDJY"/>
@@ -1525,7 +1548,7 @@
                 <Sweep_Location Value="2.500000000000000000e-01" ID="YDSZANTDROQ"/>
                 <Taper Value="1.000000000000000000e+00" ID="DQQCBQLVKTA"/>
                 <Tip_Chord Value="6.360000000000000098e-01" ID="BIRJSJMPPDB"/>
-                <Twist Value="-3.125000000000000000e-01" ID="OJVORASPKMG"/>
+                <Twist Value="0.000000000000000000e+00" ID="OJVORASPKMG"/>
                 <Twist_Location Value="4.000000000000000222e-01" ID="BQLCMDZOGFR"/>
               </XSec>
             </ParmContainer>
@@ -1660,7 +1683,7 @@
                 <InLEDihedral Value="7.016709298534876753e-15" ID="FUAPCXNXTUT"/>
                 <InLEMode Value="0.000000000000000000e+00" ID="KRXZAYQLYBB"/>
                 <InLEStrength Value="1.000000000000000000e+00" ID="KLRTJTYIBDB"/>
-                <InLESweep Value="0.000000000000000000e+00" ID="BPMDPDFQCTJ"/>
+                <InLESweep Value="-0.000000000000000000e+00" ID="BPMDPDFQCTJ"/>
                 <InTEDihedral Value="-7.016709298534876753e-15" ID="AJVWASHOSIM"/>
                 <InTEMode Value="0.000000000000000000e+00" ID="AJMBEOPGHNA"/>
                 <InTEStrength Value="1.000000000000000000e+00" ID="XMYBMKXAIWV"/>
@@ -1669,7 +1692,7 @@
                 <OutLEDihedral Value="-7.016709298534876753e-15" ID="CDDTEMCCDHF"/>
                 <OutLEMode Value="0.000000000000000000e+00" ID="CKLYRXGNWMP"/>
                 <OutLEStrength Value="1.000000000000000000e+00" ID="YCXCICRZUIB"/>
-                <OutLESweep Value="0.000000000000000000e+00" ID="GBUDEUBOPWE"/>
+                <OutLESweep Value="-0.000000000000000000e+00" ID="GBUDEUBOPWE"/>
                 <OutTEDihedral Value="7.016709298534876753e-15" ID="NJGLFWUENEO"/>
                 <OutTEMode Value="0.000000000000000000e+00" ID="UEWTMRRILNH"/>
                 <OutTEStrength Value="1.000000000000000000e+00" ID="EHBHPLJSSKM"/>
@@ -1685,7 +1708,7 @@
                 <Sweep_Location Value="2.500000000000000000e-01" ID="UCKOCCKBSVG"/>
                 <Taper Value="1.000000000000000000e+00" ID="EBBUVDZGFIN"/>
                 <Tip_Chord Value="6.360000000000000098e-01" ID="NAOGGIDUJJV"/>
-                <Twist Value="-3.125000000000000000e-01" ID="DJRYUYCZIVE"/>
+                <Twist Value="0.000000000000000000e+00" ID="DJRYUYCZIVE"/>
                 <Twist_Location Value="4.000000000000000222e-01" ID="SMNHPRDUWUJ"/>
               </XSec>
             </ParmContainer>
@@ -1846,7 +1869,6 @@
         <AnalysisMethod Value="0.000000000000000000e+00" ID="HTNWSTRFWFF"/>
         <AutoTimeNumRevs Value="5.000000000000000000e+00" ID="IODZVVVDVMG"/>
         <AutoTimeStepFlag Value="1.000000000000000000e+00" ID="NAZGEUEZIRS"/>
-        <BatchModeFlag Value="1.000000000000000000e+00" ID="QMOHZLYYBBI"/>
         <BetaEnd Value="0.000000000000000000e+00" ID="PEYYMSXRKRE"/>
         <BetaNpts Value="1.000000000000000000e+00" ID="HZDFDXAOFGT"/>
         <BetaStart Value="0.000000000000000000e+00" ID="GDGDKCDOGWP"/>
@@ -1872,6 +1894,7 @@
         <Machref Value="2.999999999999999889e-01" ID="AGPPXETIRQX"/>
         <ManualVrefFlag Value="0.000000000000000000e+00" ID="DYDFGXDMEGV"/>
         <MassSet Value="0.000000000000000000e+00" ID="MQDLQYVXOUD"/>
+        <MassSliceDir Value="0.000000000000000000e+00" ID="WORUHTQWXVR"/>
         <MaxTurnAngle Value="-1.000000000000000000e+00" ID="MLDNOGFFVYL"/>
         <MaxTurnToggle Value="0.000000000000000000e+00" ID="BDKIOFUYIPL"/>
         <NCPU Value="4.000000000000000000e+00" ID="XPJTPUEHKOX"/>
@@ -2025,16 +2048,13 @@
         <DrawWake Value="1.000000000000000000e+00" ID="ELSFVQXLPYF"/>
       </DrawMesh>
       <ExportCFD>
-        <CURV_Export Value="1.000000000000000000e+00" ID="IOYOVGMHXHV"/>
         <DAT_Export Value="1.000000000000000000e+00" ID="ZDKZLDUTRNI"/>
         <ExportRawFlag Value="0.000000000000000000e+00" ID="SOOYAVYJSHB"/>
         <FACET_Export Value="1.000000000000000000e+00" ID="UCTGFZNWVLN"/>
         <GMSH_Export Value="1.000000000000000000e+00" ID="QVSRAKBFHOW"/>
         <KEY_Export Value="1.000000000000000000e+00" ID="XDBMSNXPSGW"/>
         <OBJ_Export Value="1.000000000000000000e+00" ID="ATBOHSJQXJT"/>
-        <PLOT3D_Export Value="1.000000000000000000e+00" ID="JSIYMEAXVVZ"/>
         <POLY_Export Value="1.000000000000000000e+00" ID="JIGMEBDSKDV"/>
-        <SRF_Export Value="1.000000000000000000e+00" ID="WRKCLGFGWLR"/>
         <SRF_XYZIntCurve Value="0.000000000000000000e+00" ID="RBESRCPCRXS"/>
         <STL_Export Value="1.000000000000000000e+00" ID="LRPAOESUDUP"/>
         <TKEY_Export Value="1.000000000000000000e+00" ID="UMJJLNSUAIR"/>
@@ -2061,6 +2081,7 @@
       <Global>
         <ConvertToQuadsFlag Value="0.000000000000000000e+00" ID="OUKWOAACYRW"/>
         <CubicSurfTolerance Value="9.999999999999999547e-07" ID="IDQSOBCALPR"/>
+        <DegenSet Value="-1.000000000000000000e+00" ID="FFYIOAJLSGQ"/>
         <DemoteSurfsCubicFlag Value="0.000000000000000000e+00" ID="LOEAPLTKDGP"/>
         <HighOrderElementFlag Value="0.000000000000000000e+00" ID="AXGYWCWFNMV"/>
         <IntersectSubSurfs Value="1.000000000000000000e+00" ID="CDHNUYOTBIB"/>
@@ -2111,6 +2132,7 @@
       <Global>
         <ConvertToQuadsFlag Value="0.000000000000000000e+00" ID="RWQFCXULPUP"/>
         <CubicSurfTolerance Value="9.999999999999999547e-07" ID="LFXOIEUSTJU"/>
+        <DegenSet Value="-1.000000000000000000e+00" ID="AHWVPVUDXZN"/>
         <DemoteSurfsCubicFlag Value="0.000000000000000000e+00" ID="JPHUPEICLTO"/>
         <HighOrderElementFlag Value="0.000000000000000000e+00" ID="WINWBGIOWRK"/>
         <IntersectSubSurfs Value="1.000000000000000000e+00" ID="RGRREMHWIOO"/>
@@ -2137,7 +2159,87 @@
     </ParmContainer>
   </CFDGridDensity>
   <StructureMgr>
-    <CurrStructIndex>-1</CurrStructIndex>
+    <ParmContainer>
+      <ID>OASRCUNJIM</ID>
+      <Name>Default</Name>
+      <Struct>
+        <CurrStructIndex Value="-1.000000000000000000e+00" ID="VJPWLRDVOHM"/>
+      </Struct>
+    </ParmContainer>
+    <FeaPropertyInfo>
+      <ParmContainer>
+        <ID>PMUGQKNJMI</ID>
+        <Name>DefaultShell</Name>
+        <FeaProperty>
+          <CrossSecArea Value="1.000000000000000056e-01" ID="CVATFNFCMMI"/>
+          <CrossSecArea_FEM Value="1.000000000000000056e-01" ID="EFDULPBLXDH"/>
+          <CrossSectType Value="0.000000000000000000e+00" ID="HHHXLHOOGMA"/>
+          <Dim1 Value="1.000000000000000056e-01" ID="VCTILNLOSWB"/>
+          <Dim1_FEM Value="1.000000000000000056e-01" ID="DAOVALDJYKC"/>
+          <Dim2 Value="1.000000000000000056e-01" ID="WDICTFBZHCH"/>
+          <Dim2_FEM Value="1.000000000000000056e-01" ID="QGAENEABPAW"/>
+          <Dim3 Value="1.000000000000000056e-01" ID="RDVFYCVLOLI"/>
+          <Dim3_FEM Value="1.000000000000000056e-01" ID="CQGYLMPGQIR"/>
+          <Dim4 Value="1.000000000000000056e-01" ID="XVIEQSSNNHS"/>
+          <Dim4_FEM Value="1.000000000000000056e-01" ID="DGEULJPFBWH"/>
+          <Dim5 Value="1.000000000000000056e-01" ID="WFBBGUPNWAF"/>
+          <Dim5_FEM Value="1.000000000000000056e-01" ID="MWATEBPTAYA"/>
+          <Dim6 Value="1.000000000000000056e-01" ID="HQXQXXAUUUY"/>
+          <Dim6_FEM Value="1.000000000000000056e-01" ID="GHNERZVLSWQ"/>
+          <FeaMaterialIndex Value="-1.000000000000000000e+00" ID="QAJAAAVGSRO"/>
+          <FeaPropertyType Value="0.000000000000000000e+00" ID="LNVLFEFYUTC"/>
+          <Ixx Value="1.000000000000000056e-01" ID="SPMXMOXXLEB"/>
+          <Ixx_FEM Value="1.000000000000000056e-01" ID="NVYHRZLNREC"/>
+          <Iyy Value="1.000000000000000056e-01" ID="KCVCSFBXVSL"/>
+          <Iyy_FEM Value="1.000000000000000056e-01" ID="UELJLYJFFKP"/>
+          <Izy Value="1.000000000000000056e-01" ID="IMPKFUMAWND"/>
+          <Izy_FEM Value="1.000000000000000056e-01" ID="UQLQLLKUSOS"/>
+          <Izz Value="1.000000000000000056e-01" ID="LFLDAGFZFKM"/>
+          <Izz_FEM Value="1.000000000000000056e-01" ID="OVLFPFXVALO"/>
+          <LengthUnit Value="3.000000000000000000e+00" ID="HNFOUGDPVFQ"/>
+          <Thickness Value="1.000000000000000056e-01" ID="ZBSIXBXMKYV"/>
+          <Thickness_FEM Value="1.000000000000000056e-01" ID="BAKZNJTQUVD"/>
+        </FeaProperty>
+      </ParmContainer>
+      <FeaMaterialID>_Al6061T6</FeaMaterialID>
+    </FeaPropertyInfo>
+    <FeaPropertyInfo>
+      <ParmContainer>
+        <ID>VEJDWVSCSV</ID>
+        <Name>DefaultBeam</Name>
+        <FeaProperty>
+          <CrossSecArea Value="1.000000000000000056e-01" ID="JPTUODXPDGG"/>
+          <CrossSecArea_FEM Value="1.000000000000000056e-01" ID="QCBUSVJQBBU"/>
+          <CrossSectType Value="0.000000000000000000e+00" ID="CNZVPIUPMLJ"/>
+          <Dim1 Value="1.000000000000000056e-01" ID="WAYGEGAFIYW"/>
+          <Dim1_FEM Value="1.000000000000000056e-01" ID="ZDLRXLBWVVI"/>
+          <Dim2 Value="1.000000000000000056e-01" ID="IUBPMELQUSY"/>
+          <Dim2_FEM Value="1.000000000000000056e-01" ID="AAMRKUQYGPL"/>
+          <Dim3 Value="1.000000000000000056e-01" ID="CIVMYRJHWDG"/>
+          <Dim3_FEM Value="1.000000000000000056e-01" ID="VSAOBKOBVXL"/>
+          <Dim4 Value="1.000000000000000056e-01" ID="GZDSTIRRTGX"/>
+          <Dim4_FEM Value="1.000000000000000056e-01" ID="NAXOZDQCKAR"/>
+          <Dim5 Value="1.000000000000000056e-01" ID="JYFRBLDOLSN"/>
+          <Dim5_FEM Value="1.000000000000000056e-01" ID="GPRJWGZRFRQ"/>
+          <Dim6 Value="1.000000000000000056e-01" ID="PQBOOYPRXIY"/>
+          <Dim6_FEM Value="1.000000000000000056e-01" ID="ZGVXAAQOMRA"/>
+          <FeaMaterialIndex Value="-1.000000000000000000e+00" ID="PCXJVMABFUH"/>
+          <FeaPropertyType Value="1.000000000000000000e+00" ID="PRWJGFRPUYR"/>
+          <Ixx Value="1.000000000000000056e-01" ID="EPEZDOBHNFI"/>
+          <Ixx_FEM Value="1.000000000000000056e-01" ID="YGCQRDRYLWJ"/>
+          <Iyy Value="1.000000000000000056e-01" ID="BTWQJCQNAMP"/>
+          <Iyy_FEM Value="1.000000000000000056e-01" ID="DRNVZQEWMMT"/>
+          <Izy Value="1.000000000000000056e-01" ID="LILCWBUHGLO"/>
+          <Izy_FEM Value="1.000000000000000056e-01" ID="URVESAIYTUA"/>
+          <Izz Value="1.000000000000000056e-01" ID="YCACJPAKLQI"/>
+          <Izz_FEM Value="1.000000000000000056e-01" ID="YHAKLWFTPSN"/>
+          <LengthUnit Value="3.000000000000000000e+00" ID="MTXTABBDJXR"/>
+          <Thickness Value="1.000000000000000056e-01" ID="DPVICFYUMFF"/>
+          <Thickness_FEM Value="1.000000000000000056e-01" ID="BSFAFUGIFND"/>
+        </FeaProperty>
+      </ParmContainer>
+      <FeaMaterialID>_Al6061T6</FeaMaterialID>
+    </FeaPropertyInfo>
   </StructureMgr>
   <ClippingMgr>
     <ParmContainer>
@@ -2218,6 +2320,16 @@
       <NumExcres>0</NumExcres>
     </Excrescence>
   </ParasiteDragMgr>
+  <AeroStructMgr>
+    <ParmContainer>
+      <ID>GDCAHIRKQU</ID>
+      <Name>AeroStructSettings</Name>
+      <AeroStructure>
+        <CurrStructAssyIndex Value="-1.000000000000000000e+00" ID="CMAIUKDYYZJ"/>
+        <DynamicPressure Value="0.000000000000000000e+00" ID="OKFJIKXPUMG"/>
+      </AeroStructure>
+    </ParmContainer>
+  </AeroStructMgr>
   <SetNames>
     <Set>All</Set>
     <Set>Shown</Set>

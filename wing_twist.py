@@ -383,6 +383,8 @@ def main(parms):
             print([final_twist[s] for s in stations])
         adjust_wing_twist(
             geom,[final_twist[s] for s in stations],static)
+        vsp.WriteVSPFile('opt_'+parms["filename"])
+
         # final = sim(geom,static,aoa=0.,name="optimized")
         final,oswald = sim(
             geom,static,

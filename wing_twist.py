@@ -16,7 +16,7 @@ parms = {
     "output_name":"eppler_baseline.txt",
     # "b" : 8., #span, taken from VSP
     "CL":0.9, #target lift
-    "N": 120, # n of basis functions NOTE N MUST BE GREATER THAN M!!!
+    "N": 6, # n of basis functions NOTE N MUST BE GREATER THAN M!!!
     "base_aoa" : 0.,
     "test_aoa": 5., #degrees
     # "span_stations": 5, # num of twist stations,taken from vsp

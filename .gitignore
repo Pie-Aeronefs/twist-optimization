@@ -8,3 +8,16 @@ a-wing_DegenGeom.history
 a-wing_DegenGeom.quad.cases
 a-wing_DegenGeom.slc
 a-wing_DegenGeom.vspaero
+
+opt_a-wing_DegenGeom.adb
+opt_a-wing_DegenGeom.adb.cases
+opt_a-wing_DegenGeom.csv
+opt_a-wing_DegenGeom.cuts
+opt_a-wing_DegenGeom.group.1
+opt_a-wing_DegenGeom.history
+opt_a-wing_DegenGeom.quad.cases
+opt_a-wing_DegenGeom.slc
+opt_a-wing_DegenGeom.vspaero
+
+
+*twist_optimizer.csv

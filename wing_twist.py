@@ -14,34 +14,15 @@ vsp.VSPCheckSetup()
 parms = {
     "filename":"a-wing.vsp3",
     "output_name":"eppler_baseline.txt",
-    # "b" : 8., #span, taken from VSP
     "CL":0.9, #target lift
-    "N": 6, # n of basis functions NOTE N MUST BE GREATER THAN M!!!
     "base_aoa" : 0.,
-    "test_aoa": 5., #degrees
-    # "span_stations": 5, # num of twist stations,taken from vsp
-    "spanwise_resolution" : -3, # in 10^x to avoid float stations
+    "test_aoa": 1., #degrees
     "debug" : False,
-    "adjust_span_stations" : False,
     "run_sims": True,
     # You can set this to look at a different geometry. The default is the first one.
     #"geom_name":"Main_wing_base",
-    "magnitude":3.
+    "magnitude":1. #test perturbation
     }
-
-def bias_y(b,span_stations=5,) :
-    # use circular distribution
-    pts = np.linspace(0,1,span_stations+1)#[1:]
-    y = np.array([np.sin(i*np.pi/2.)*b/2. for i in pts])
-    assert y[-1] == b/2.
-    return y[1:] # skip root station
-
-def round_y(y,resolution=-1) :
-    # b = y[-1].copy() #to avoid any unpleasantness
-    b = y[-1]
-    y = np.array([np.floor(i*10**-resolution)*10**resolution for i in y])
-    y[-1] = b
-    return y
 
 def ellipse(y,b,CLb):
     assert y <= b/2.
@@ -60,35 +41,6 @@ def ellipse(y,b,CLb):
         print("ellipse:",y**2/semi_major**2 + Clc**2/semi_minor**2)
         raise ValueError("Solved Ellipse does not match definition!")
     return Clc
-
-def rbf(r,r0):
-    #note, arbitrary function, can be replaced by other schemes
-    return np.sqrt(r**2+r0**2)
-
-def interp(x1,x2,x):
-    assert type(x1) in (tuple,list)
-    assert type(x2) in (tuple,list)
-    dydx = (x2[1]-x1[1])/(x2[0]-x1[0])
-    y = dydx*(x-x1[0])+x1[1]
-    return y
-
-def test_interp():
-    assert interp([1,1],[2,2],1.5) == 1.5
-
-def sub_twist(y,b,eta):
-    return rbf(abs(y-eta),1.)
-
-def master_twist(y,b,aoa,eta,weights=None,magnitude=1.):
-    if weights is None :
-        weights = np.ones(len(eta))
-    else :
-        assert len(eta)+1 ==len(weights)
-    N = len(eta)
-    w = {"aoa":weights[0]*aoa}
-    for station in y :
-        w[station] = magnitude * sum(
-            [weights[i+1]*sub_twist(station,b,eta[i]) for i in range(N)])
-    return w
 
 def sim(geom,static,aoa=0.,name=None,debug=False,oswald=False):
     #NOTE assuming symmetrical planform
@@ -148,10 +100,7 @@ def find_Cl_dist(results,get_y=False) :
     else :
         return Clc
 
-
 def adjust_wing_twist(geom,twists,static,span_stations=None):
-    if type(twists) is not list :
-        raise TypeError("Single station twist not yet implemented") #TODO fix
     if span_stations is None:
         span_stations = len(twists)
     else :
@@ -164,32 +113,11 @@ def adjust_wing_twist(geom,twists,static,span_stations=None):
     for i in range(span_stations) :
         vsp.SetParmVal(geom,"Twist",f"XSec_{i+1}",twists[i])
     vsp.Update()
-    model_parms = []
-    for i in range(span_stations):
-        model_parms.append(vsp.GetParmVal(geom,"Twist",f"XSec_{i+1}"))
-    try :
-        assert twists == model_parms
-    except AssertionError:
-        print("twist vector : ", twists)
-        print("model_parms : ", model_parms)
-        raise ValueError("Model twist does not match commanded twist vector!")
-    check_static_parms(static)
-
-
 
 def generate_A(
-    geom,static,aoa,y,CL,b,eta,
-    magnitude=1.,span_stations=None,debug=False):
-    N = len(eta)
-    if span_stations is None:
-        span_stations = len(y)
-    else :
-        assert y[0] != 0
-        try :
-            assert span_stations == len(y)
-        except AssertionError :
-            raise ValueError(f"span_stations is {span_stations} while len(y) is {len(y)}")
-    # assert N < M
+    geom,static,aoa,CL,b,span_stations,
+    magnitude=1.,debug=False):
+    N = span_stations
     # set washout to zero for baseline :
     adjust_wing_twist(
         geom,list(np.zeros(span_stations)),
@@ -205,28 +133,26 @@ def generate_A(
         print("Baseline CL dist : ", Clcy)
         print("resultant A column : ",del_Cl_y_aoa)
     M = len(Yavg)
-    assert N < M
+
     twist_sim_results = None
-    for i,e in enumerate(eta) :
-        twists = [magnitude*sub_twist(station,b/2,e) for station in y]
-        assert max(twists) < b*magnitude*2  #sanity check for twist values
-        print("eta = ",e,", twist : ",twists)
-        print(f"Twist run {i} of {len(eta)}")
+    for i in range(span_stations):
+        twists = np.zeros(span_stations)
+        twists[i] = magnitude
+        print("twist : ",twists)
+        print(f"Twist run {i} of {len(twists)}")
         adjust_wing_twist(geom,twists,static,span_stations=span_stations)
-        sim_results_twist = sim(geom,static,name=f"twist_eta{e}")
+        sim_results_twist = sim(geom,static,name=f"twist_{i}")
         twist_sim =find_Cl_dist(sim_results_twist) - Clcy
         if twist_sim_results is None :
             twist_sim_results = np.array([twist_sim])
         else :
             twist_sim_results = np.append(twist_sim_results,[twist_sim],axis=0)
     A = np.append([del_Cl_y_aoa],twist_sim_results,axis=0)
-    try :
-        assert A.shape == (N+1,M)
-    except AssertionError :
-        print("N : ", N)
-        print("M : ", M)
-        print("A dimensions :", A.shape)
-        raise ValueError("A matrix is not N+1 by M matrix")
+
+    print("N : ", N)
+    print("M : ", M)
+    print("A dimensions :", A.shape)
+
     return np.transpose(A),Clcy,B # A should be m by n
 
 def get_static_parms(static_parm_ids):
@@ -300,55 +226,17 @@ def main(parms):
     S = static["vals"]["S_ref"]
     test_aoa = parms["test_aoa"]
     CL = parms["CL"]
-    N = parms["N"]
     mag = parms["magnitude"]
     output_name = parms["output_name"]
-
     debug = parms["debug"]
+
+    N = span_stations
     if debug :
         print("span_stations :",span_stations)
-        test_interp()
-    if parms["adjust_span_stations"] :
-        y = bias_y(b,span_stations=span_stations)
-        y = round_y(y,resolution=parms["spanwise_resolution"])
-        spans = [y[i+1]-y[i] for i in range(span_stations-1)]
-        spans = [y[0]]+spans
-        print("Spanwise Stations : ", y)
-        if debug :
-            print(spans)
-        try :
-            assert sum(spans) > b*.5*0.9999999
-            assert sum(spans) < b*.5*1.0000001
-        except AssertionError:
-            print("SubSpans: ",spans)
-            print("Sum of spans: ",sum(spans))
-            print("Semi-Span: ", b/2.)
-            raise ValueError("Sum of spans not equal to semi-span!")
-        for i,span in enumerate(spans) :
-            vsp.SetParmVal(geom,"Span",f"XSec_{i+1}",span)
-        vsp.Update()
-        check_static_parms(static)
-        if not debug :
-            vsp.WriteVSPFile(parms["filename"],SET_ALL)
-    else :
-        spans = []
-        y = []
-        for i in range(span_stations):
-            span = vsp.GetParmVal(geom,"Span",f"XSec_{i+1}")
-            spans.append(span)
-            y.append(sum(spans))
-        y = round_y(y,resolution=parms["spanwise_resolution"])
-        if debug :
-            print("scraped spans: ", spans)
-            print("scraped y : ", y)
-    if debug :
-        print("y before run sims :",y)
+
     if parms["run_sims"] :
-        eta = np.linspace(0,b/2.,N)
-        A,Clcy,B = generate_A(geom,static,test_aoa,y,CL,b,eta,magnitude=mag)
+        A,Clcy,B = generate_A(geom,static,test_aoa,CL,b,span_stations,magnitude=mag)
         Clc_y_target = B + Clcy
-        M = B.shape[0]
-        # assert B.shape[0] == M
         try :
             assert np.sum(np.matmul(np.linalg.pinv(A),A)-np.identity(N+1)) < 0.0001
         except AssertionError:
@@ -370,26 +258,23 @@ def main(parms):
             print("pinv(A): ",np.linalg.pinv(A).shape)
             print("B : ",B)
             raise ValueError("pinv(A) is incompatible with B")
-        print("Twist Weight Vector : ", x)
-        #NOTE final twist is a dict, with aoa
-        #TODO figure out why y stations are no longer rounded in final twist
-        final_twist = master_twist(y,b,test_aoa,eta,weights=x)
-        stations = [s for s in final_twist]
-        stations.pop(stations.index("aoa"))
+        print("Solution Vector : ", x)
+        final_aoa = x[0]
+        final_twist = x[1:]
         # b vector is Cl*c_target - Cl*c_current
 
         # evaluate results
         if debug :
-            print(final_twist["aoa"])
-            print([final_twist[s] for s in stations])
+            print(final_aoa)
+            print(final_twist)
         adjust_wing_twist(
-            geom,[final_twist[s] for s in stations],static)
+            geom,final_twist,static)
         vsp.WriteVSPFile('opt_'+parms["filename"])
 
         # final = sim(geom,static,aoa=0.,name="optimized")
         final,oswald = sim(
             geom,static,
-            aoa=final_twist["aoa"],name="optimized",
+            aoa=final_aoa,name="optimized",
             oswald=True)
         final_perf,Yavg = find_Cl_dist(final,get_y=True)
 
@@ -413,6 +298,7 @@ def main(parms):
             print("Rank A : ", np.linalg.matrix_rank(A))
         # print("Rank At : ", np.linalg.matrix_rank(np.transpose(A)))
         print("x vector : ", x)
+        print("Optimized AoA : ", final_aoa)
         print("Optimized Twist Vector : ", final_twist)
         print("results : ",final_perf)
         print("final difference : ",Clc_y_target - final_perf)
@@ -424,6 +310,8 @@ def main(parms):
             f.write(np.array2string(x))
             f.write("\nb vector : ")
             f.write(np.array2string(B))
+            f.write("\nOptimized AoA : ")
+            f.write(str(final_aoa))
             f.write("\nOptimized Twist Vector : ")
             f.write(str(final_twist))
             f.write("\nResults : ")

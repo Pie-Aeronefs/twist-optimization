@@ -12,16 +12,18 @@ import openvsp as vsp
 vsp.VSPCheckSetup()
 
 parms = {
-    "filename":"a-wing.vsp3",
-    "output_name":"eppler_baseline.txt",
-    "CL":0.9, #target lift
+    "filename":"UG-2.vsp3",
+    "output_name":"wing_fuse_vlm.txt",
+    "CL":0.75, #target lift
     "base_aoa" : 0.,
     "test_aoa": 1., #degrees
     "debug" : False,
     "run_sims": True,
     # You can set this to look at a different geometry. The default is the first one.
-    #"geom_name":"Main_wing_base",
-    "magnitude":1. #test perturbation
+    "geom_name":"Main_wing_base",
+    "magnitude":1., #test perturbation
+    "geom_set":"Set_1",
+    "method":0,#0=VLM, 1=panel
     }
 
 def ellipse(y,b,CLb):
@@ -42,12 +44,19 @@ def ellipse(y,b,CLb):
         raise ValueError("Solved Ellipse does not match definition!")
     return Clc
 
-def sim(geom,static,aoa=0.,name=None,debug=False,oswald=False):
+def sim(
+    geom,static,
+    aoa=0.,geom_set="Set_0",
+    name=None,method=0,debug=False,oswald=False):
     #NOTE assuming symmetrical planform
+    sym = 1
+    geom_set = vsp.GetSetIndex(geom_set)
     vsp.DeleteAllResults()
     #NOTE return as np.array!
     vsp.SetAnalysisInputDefaults("VSPAEROComputeGeometry")
     vsp.SetIntAnalysisInput("VSPAEROComputeGeometry","AnalysisMethod",[0]) #Vortex Lattice = 0, panel = 1
+    vsp.SetIntAnalysisInput("VSPAEROComputeGeometry","Symmetry",[sym])
+    vsp.SetIntAnalysisInput("VSPAEROComputeGeometry","GeomSet",[geom_set])
     compgeom_results = vsp.ExecAnalysis("VSPAEROComputeGeometry")
 
     vsp.SetAnalysisInputDefaults("VSPAEROSweep")
@@ -57,13 +66,15 @@ def sim(geom,static,aoa=0.,name=None,debug=False,oswald=False):
     except AssertionError :
         print(vsp.GetIntAnalysisInput("VSPAEROSweep","AlphaNpts"))
         raise ValueError("AlphaNpts not equal to 1")
-    vsp.SetIntAnalysisInput("VSPAEROSweep","AnalysisMethod",[0]) #Vortex Lattice = 0, panel = 1
+    vsp.SetIntAnalysisInput("VSPAEROSweep","AnalysisMethod",[method]) #Vortex Lattice = 0, panel = 1
     vsp.SetDoubleAnalysisInput("VSPAEROSweep","Sref",[static["vals"]["S_ref"]])
     vsp.SetDoubleAnalysisInput("VSPAEROSweep","bref",[static["vals"]["b_ref"]])
     vsp.SetDoubleAnalysisInput("VSPAEROSweep","cref",[static["vals"]["c_ref"]])
     vsp.SetDoubleAnalysisInput("VSPAEROSweep","AlphaStart",[aoa])
-    vsp.SetIntAnalysisInput("VSPAEROSweep","Symmetry",[1])
-    vsp.SetIntAnalysisInput("VSPAEROSweep","NCPU",[11]) #set to 8 by default
+    vsp.SetIntAnalysisInput("VSPAEROSweep","Symmetry",[sym])
+    vsp.SetIntAnalysisInput("VSPAEROSweep","GeomSet",[geom_set])
+    vsp.SetIntAnalysisInput("VSPAEROSweep","NCPU",[8]) #set to 8 by default
+
     if debug :
         vsp.PrintAnalysisInputs("VSPAEROSweep")
     results = vsp.ExecAnalysis("VSPAEROSweep")
@@ -79,6 +90,7 @@ def sim(geom,static,aoa=0.,name=None,debug=False,oswald=False):
 
 def find_Cl_dist(results,get_y=False) :
     Yavg = np.array(vsp.GetDoubleResults(results,"Yavg"))
+    #TODO results is giving YAvg for all wings, not just main wing.  must prune!
     cl = np.array(vsp.GetDoubleResults(results,"cl"))
     cl_norm = np.array(vsp.GetDoubleResults(results,"cl*c/cref"))
     cref = vsp.GetDoubleResults(results,"FC_Cref_")[0]
@@ -116,17 +128,21 @@ def adjust_wing_twist(geom,twists,static,span_stations=None):
 
 def generate_A(
     geom,static,aoa,CL,b,span_stations,
-    magnitude=1.,debug=False):
+    magnitude=1.,geom_set="Set_0",debug=False):
     N = span_stations
     # set washout to zero for baseline :
     adjust_wing_twist(
         geom,list(np.zeros(span_stations)),
         static,span_stations=span_stations)
-    sim_results_baseline = sim(geom,static,name="baseline")
+    sim_results_baseline = sim(
+        geom,static,
+        geom_set=geom_set,name="baseline")
     Clcy,Yavg = find_Cl_dist(sim_results_baseline,get_y=True)
     Clc_y_target = set_target_CL(CL,b,Yavg) * static["vals"]["c_ref"]
     B = Clc_y_target - Clcy
-    sim_results_aoa = sim(geom,static,aoa=aoa,name=f"aoa{aoa}")
+    sim_results_aoa = sim(
+        geom,static,
+        geom_set=geom_set,aoa=aoa,name=f"aoa{aoa}")
     del_Cl_y_aoa = find_Cl_dist(sim_results_aoa) - Clcy
     if debug :
         print("aoa_CL_dist : ",find_Cl_dist(sim_results_aoa))
@@ -141,7 +157,9 @@ def generate_A(
         print("twist : ",twists)
         print(f"Twist run {i} of {len(twists)}")
         adjust_wing_twist(geom,twists,static,span_stations=span_stations)
-        sim_results_twist = sim(geom,static,name=f"twist_{i}")
+        sim_results_twist = sim(
+            geom,static,
+            geom_set=geom_set,name=f"twist_{i}")
         twist_sim =find_Cl_dist(sim_results_twist) - Clcy
         if twist_sim_results is None :
             twist_sim_results = np.array([twist_sim])
@@ -193,9 +211,9 @@ def set_target_CL(CL,b,Yavg):
         print("CL_ellpise :", CL_calc)
         print("CL target : ",CL)
         print("Yavg : ",Yavg)
-        print(len(Yavg))
+        # print(len(Yavg))
         print("CL(y) : ",Clc_y_target)
-        print(len(Clc_y_target))
+        # print(len(Clc_y_target))
         raise ValueError(
             "Elliptical lift distribution does not match target CL:")
     return Clc_y_target
@@ -228,6 +246,7 @@ def main(parms):
     CL = parms["CL"]
     mag = parms["magnitude"]
     output_name = parms["output_name"]
+    geom_set = parms["geom_set"]
     debug = parms["debug"]
 
     N = span_stations
@@ -235,7 +254,9 @@ def main(parms):
         print("span_stations :",span_stations)
 
     if parms["run_sims"] :
-        A,Clcy,B = generate_A(geom,static,test_aoa,CL,b,span_stations,magnitude=mag)
+        A,Clcy,B = generate_A(
+            geom,static,test_aoa,CL,b,span_stations,
+            geom_set=geom_set,magnitude=mag)
         Clc_y_target = B + Clcy
         try :
             assert np.sum(np.matmul(np.linalg.pinv(A),A)-np.identity(N+1)) < 0.0001
@@ -322,4 +343,3 @@ def main(parms):
             f.write(str(oswald))
 if __name__ == "__main__":
     main(parms)
-
